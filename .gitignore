@@ -5,3 +5,4 @@ __pycache__/
 .venv/
 
 groups.json
+playground.py
