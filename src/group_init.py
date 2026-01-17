@@ -14,5 +14,16 @@ while True:
     if member:
         group.add_member(member)
 
-with open("groups.json", "a") as f:
-    json.dump(group.to_dict(), f, indent = 4)
+group.split_evenly()    
+new_group = group.to_dict()
+
+try:
+    with open("groups.json", "r") as f:
+        groups = json.load(f)
+except (FileNotFoundError, json.JSONDecodeError):
+    groups = []
+
+groups.append(new_group)
+
+with open("groups.json", "w") as f:
+    json.dump(groups, f, indent = 4)
